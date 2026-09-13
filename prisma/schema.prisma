@@ -7,10 +7,81 @@ datasource db {
   provider = "postgresql"
 }
 
-// Temporary — proves the pipeline works end-to-end.
-// We replace this with the real schema (User, Application, Interview) in Phase 3.
-model ConnectionTest {
-  id        Int      @id @default(autoincrement())
-  message   String
-  createdAt DateTime @default(now())
+enum ApplicationStatus {
+  SAVED
+  APPLIED
+  ASSESSMENT
+  INTERVIEW
+  OFFER
+  REJECTED
+  WITHDRAWN
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  INTERNSHIP
+  CONTRACT
+  FREELANCE
+}
+
+enum InterviewResult {
+  PENDING
+  PASSED
+  FAILED
+  RESCHEDULED
+}
+
+model User {
+  id           String   @id @default(uuid(7))
+  name         String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  applications Application[]
+}
+
+model Application {
+  id             String            @id @default(uuid(7))
+  company        String
+  jobTitle       String
+  jobType        JobType
+  location       String?
+  salary         String?
+  jobUrl         String?
+  jobDescription String?
+  status         ApplicationStatus @default(SAVED)
+  appliedAt      DateTime?
+  followUpDate   DateTime?
+  notes          String?
+  isFavorite     Boolean           @default(false)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  userId         String
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  interviews     Interview[]
+
+  @@index([userId])
+  @@index([userId, status])
+  @@index([userId, followUpDate])
+}
+
+model Interview {
+  id            String          @id @default(uuid(7))
+  round         String
+  interviewDate DateTime
+  interviewType String
+  notes         String?
+  result        InterviewResult @default(PENDING)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  applicationId String
+  application   Application     @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([applicationId])
 }
