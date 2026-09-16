@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { Nav } from "@/components/Nav";
 import { StatCard } from "@/components/StatCard";
 import { StatusOverviewBar } from "@/components/StatusOverviewBar";
+import { Footer } from "@/components/Footer";
 
 const TRACKED_STATUSES = [
   "SAVED",
@@ -58,7 +59,7 @@ export default async function DashboardPage() {
   return (
     <div>
       <Nav />
-      <div className="mx-auto max-w-5xl px-4 py-12">
+            <div className="mx-auto max-w-6xl px-4 py-12">
         <h1 className="text-2xl font-semibold text-gray-900">
           Welcome, {user?.name}
         </h1>
@@ -149,6 +150,7 @@ export default async function DashboardPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
