@@ -8,6 +8,7 @@ import { ApplicationsFilterBar } from "@/components/ApplicationsFilterBar";
 import { Pagination } from "@/components/Pagination";
 import type { Prisma } from "@/generated/prisma/client";
 import type { ApplicationStatus, JobType } from "@/generated/prisma/enums";
+import { EditIcon } from "@/components/icons";
 
 const PAGE_SIZE = 10;
 
@@ -156,18 +157,21 @@ export default async function ApplicationsPage({
                       <td className="px-4 py-3 text-gray-500">
                         {app.appliedAt ? app.appliedAt.toLocaleDateString() : "—"}
                       </td>
-                      <td className="px-4 py-3 text-right">
-                        <Link
-                          href={`/applications/${app.id}/edit`}
-                          className="text-gray-600 hover:underline"
-                        >
-                          Edit
-                        </Link>
-                        <span className="mx-2 text-gray-300">|</span>
-                        <DeleteApplicationButton
-                          applicationId={app.id}
-                          companyName={app.company}
-                        />
+                      <td className="px-4 py-3">
+                        <div className="flex items-center justify-end gap-1">
+                          <Link
+                            href={`/applications/${app.id}/edit`}
+                            aria-label="Edit application"
+                            title="Edit"
+                            className="rounded-md p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                          >
+                            <EditIcon />
+                          </Link>
+                          <DeleteApplicationButton
+                            applicationId={app.id}
+                            companyName={app.company}
+                          />
+                        </div>
                       </td>
                     </tr>
                   ))}

@@ -7,6 +7,7 @@ import { DeleteApplicationButton } from "@/components/DeleteApplicationButton";
 import { StatusSelect } from "@/components/StatusSelect";
 import { FavoriteButton } from "@/components/FavoriteButton";
 import { DeleteInterviewButton } from "@/components/DeleteInterviewButton";
+import { EditIcon } from "@/components/icons";
 
 export default async function ApplicationDetailsPage({
   params,
@@ -47,9 +48,11 @@ export default async function ApplicationDetailsPage({
           <div className="flex items-center gap-2">
             <Link
               href={`/applications/${application.id}/edit`}
-              className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              aria-label="Edit application"
+              title="Edit"
+              className="rounded-md border border-gray-300 p-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900"
             >
-              Edit
+              <EditIcon />
             </Link>
             <DeleteApplicationButton
               applicationId={application.id}
@@ -162,12 +165,14 @@ export default async function ApplicationDetailsPage({
                     <span className="font-medium text-gray-900">{interview.round}</span>{" "}
                     — {interview.interviewDate.toLocaleDateString()} ({interview.result}) ({interview.interviewType})
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
                     <Link
                       href={`/applications/${application.id}/interviews/${interview.id}/edit`}
-                      className="text-gray-600 hover:underline"
+                      aria-label="Edit interview"
+                      title="Edit"
+                      className="rounded-md p-1.5 text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                     >
-                      Edit
+                      <EditIcon className="h-3.5 w-3.5" />
                     </Link>
                     <DeleteInterviewButton
                       interviewId={interview.id}

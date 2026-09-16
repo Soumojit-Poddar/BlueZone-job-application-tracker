@@ -38,7 +38,7 @@ export default async function KanbanPage() {
   return (
     <div>
       <Nav />
-      <div className="mx-auto max-w-6xl px-4 py-12">
+      <div className="mx-auto max-w-7xl px-4 py-12">
         <h1 className="text-2xl font-semibold text-gray-900">Kanban Board</h1>
         <p className="mt-1 text-sm text-gray-500">
           Drag a card between columns, or use the dropdown on any card, to
