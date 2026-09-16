@@ -7,6 +7,7 @@ import { logout } from "@/lib/actions/auth";
 const links = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/applications", label: "Applications" },
+  { href: "/kanban", label: "Kanban" },
 ];
 
 export function Nav() {

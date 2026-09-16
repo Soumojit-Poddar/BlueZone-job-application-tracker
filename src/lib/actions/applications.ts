@@ -154,6 +154,7 @@ export async function updateApplicationStatus(
 
   revalidatePath(`/applications/${applicationId}`);
   revalidatePath("/applications");
+  revalidatePath("/kanban");
 }
 
 export async function toggleFavorite(applicationId: string, currentValue: boolean) {
