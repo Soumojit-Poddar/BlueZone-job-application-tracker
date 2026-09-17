@@ -32,14 +32,14 @@ export default async function ApplicationDetailsPage({
     <div>
       <Nav />
       <div className="mx-auto max-w-3xl px-4 py-12">
-        <div className="flex items-start justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-center gap-3">
             <FavoriteButton
               applicationId={application.id}
               isFavorite={application.isFavorite}
             />
             <div>
-              <h1 className="text-2xl font-semibold text-gray-900">
+              <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl">
                 {application.jobTitle}
               </h1>
               <p className="text-gray-500">{application.company}</p>

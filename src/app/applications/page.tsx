@@ -128,7 +128,7 @@ export default async function ApplicationsPage({
             <p className="mt-4 text-xs text-gray-400">
               {totalCount} application{totalCount !== 1 ? "s" : ""} found
             </p>
-            <div className="mt-2 overflow-x-auto rounded-lg border border-gray-200">
+            <div className="mt-2 hidden overflow-x-auto rounded-lg border border-gray-200 md:block">
               <table className="min-w-full divide-y divide-gray-200 text-sm">
                 <thead className="bg-gray-50">
                   <tr>
@@ -177,6 +177,45 @@ export default async function ApplicationsPage({
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            <div className="mt-2 space-y-3 md:hidden">
+              {applications.map((app) => (
+                <div key={app.id} className="rounded-lg border border-gray-200 bg-white p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <Link href={`/applications/${app.id}`} className="min-w-0 flex-1">
+                      <p className="truncate font-medium text-gray-900">
+                        {app.isFavorite && (
+                          <span className="mr-1 text-yellow-500">★</span>
+                        )}
+                        {app.company}
+                      </p>
+                      <p className="truncate text-sm text-gray-500">{app.jobTitle}</p>
+                    </Link>
+                    <div className="flex flex-shrink-0 items-center gap-1">
+                      <Link
+                        href={`/applications/${app.id}/edit`}
+                        aria-label="Edit application"
+                        className="rounded-md p-2 text-gray-500 hover:bg-gray-100"
+                      >
+                        <EditIcon />
+                      </Link>
+                      <DeleteApplicationButton
+                        applicationId={app.id}
+                        companyName={app.company}
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
+                    <span className="rounded-full bg-gray-100 px-2.5 py-1 font-medium text-gray-700">
+                      {app.status}
+                    </span>
+                    <span>
+                      {app.appliedAt ? app.appliedAt.toLocaleDateString() : "No date"}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="mt-6">
