@@ -109,7 +109,9 @@ Visit `http://localhost:3000`.
 
 ## Deployment
 
-Deployed on Vercel, with the production PostgreSQL database on Neon. See [Deployment](#deployment) section — *(filled in during Phase 15)*.
+Live at: **https://blue-zone-job-application-tracker.vercel.app**
+
+Deployed on Vercel, connected directly to the GitHub repository — every push to `main` triggers an automatic rebuild and redeploy. The production PostgreSQL database is hosted on Neon. Database migrations run automatically as part of the build step (`prisma migrate deploy`), so schema changes ship safely on every deploy without a manual step.
 
 ## Known limitations
 
