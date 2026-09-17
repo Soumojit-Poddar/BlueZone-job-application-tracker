@@ -6,7 +6,9 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <header className="border-b border-gray-200 px-6 py-4">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
-          <span className="text-lg font-semibold text-gray-900">JobTrackr</span>
+          <span className="mr-4 text-xl font-bold text-[#0068A1]">
+          BlueZone🔵
+        </span>
           <nav className="flex gap-3">
             <Link
               href="/login"

@@ -24,7 +24,7 @@ export function Nav() {
   return (
     <nav className="border-b border-gray-200 bg-white shadow-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <span className="mr-4 text-lg font-semibold text-[#0068A1]">
+        <span className="mr-4 text-2xl font-bold text-[#0068A1]">
           BlueZone🔵
         </span>
 
